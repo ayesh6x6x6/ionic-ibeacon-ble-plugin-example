@@ -1,0 +1,7 @@
+{
+  "name": "beacon-second",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
