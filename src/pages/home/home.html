@@ -1,14 +1,44 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      BLE Scanner
     </ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="scan()">
+        Scan
+      </button>
+    </ion-buttons>
+    <!-- <ion-buttons end>
+      <button ion-button color="primary" (click)="onDetailPage()" >Detail</button>
+    </ion-buttons> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+   <ion-list> 
+    <button ion-item *ngFor="let device of devices" (click)="deviceSelected(device)">
+      <!-- <h2>{{device.uuid}}</h2> -->
+      <h2>{{ device.name }}</h2>
+      <p>{{ device.id }}</p>
+      <p>RSSI: {{ device.rssi }}</p>
+    </button>  
+   </ion-list> 
+
+   <!-- <ion-list *ngIf="beacons.length > 0">
+     <ion-card *ngFor="let beacon of beacons" >
+       <ion-card-title>UUID: {{beacon.uuid}}</ion-card-title>
+       <ion-card-content>
+         <h2>Major: {{beacon.major}}</h2>
+         <h4>Minor: {{beacon.minor}}</h4>
+         <p>RSSI: {{beacon.rssi}}</p>
+       </ion-card-content>
+     </ion-card>
+   </ion-list>
+   <p *ngIf="beacons.length == 0" >No beacons yet!</p> -->
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <p>{{ statusMessage }}</p>
+  </ion-toolbar>
+</ion-footer>
